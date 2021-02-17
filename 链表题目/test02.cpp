@@ -52,6 +52,22 @@ ListNode * reverseN(ListNode * head , int n)
 	return last;
 }
 
+ListNode * origin;
+
+ListNode * reverseMN(ListNode * head , int m, int n)
+{
+	//先写basecase
+	if(m == 1)
+	{
+		ListNode * last = reverseN(head,n);
+		return last;
+	}
+	// 使用递归的方法往前推
+	head->next = reverseMN(head->next,m-1,n-1);
+	return head;
+
+}
+
 int main() {
 	// 逆序创建一个链表
 	ListNode * head = new ListNode(6);
@@ -67,9 +83,12 @@ int main() {
 	// Traverse(last);
 
 	//反转链表中的前N个节点
-	ListNode * last2 = reverseN(head,3);
-	Traverse(last2);
+	// ListNode * last2 = reverseN(head,3);
+	// Traverse(last2);
 
+	// 反转链表中的一部分节点
+	ListNode * last =reverseMN(head,2,4);
+	Traverse(last);
 
 	return 0;
 }
