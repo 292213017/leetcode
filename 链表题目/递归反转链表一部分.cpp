@@ -1,18 +1,9 @@
-#include <iostream>
+// #include <iostream>
 
-using namespace std;
+// using namespace std;
 
+#include "listnode.h"
 
-class ListNode{
-public:
-	int val;
-	ListNode *next;
-	ListNode(int x , ListNode * nextl = NULL)
-	{
-		val = x;
-		next =nextl;
-	}
-};
 
 void Traverse(ListNode * head)
 {
@@ -62,7 +53,7 @@ ListNode * reverseMN(ListNode * head , int m, int n)
 		ListNode * last = reverseN(head,n);
 		return last;
 	}
-	// 使用递归的方法往前推
+	// 使用递归的方法往前推 因为前面的东西不用更改，就只需要调整一段而已
 	head->next = reverseMN(head->next,m-1,n-1);
 	return head;
 
